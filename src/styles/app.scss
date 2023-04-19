@@ -1,0 +1,71 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-white dark:bg-gray-900;
+    @apply text-gray-900 dark:text-gray-300;
+  }
+
+  .heading-sm {
+    @apply text-heading-sm;
+  }
+
+  .heading-md {
+    @apply text-heading-sm md:text-heading-md;
+  }
+
+  .heading-lg {
+    @apply text-heading-md md:text-heading-lg;
+  }
+
+  .heading-xl {
+    @apply text-heading-lg md:text-heading-xl;
+  }
+
+  .heading-2xl {
+    @apply text-heading-xl md:text-heading-2xl;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply heading-2xl;
+  }
+
+  h2 {
+    @apply heading-xl;
+  }
+
+  h3 {
+    @apply heading-lg;
+  }
+
+  h4 {
+    @apply heading-md;
+  }
+
+  h5 {
+    @apply heading-sm;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  span {
+    max-width: 60ch;
+  }
+}

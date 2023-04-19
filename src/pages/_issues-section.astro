@@ -1,0 +1,44 @@
+---
+import { Image } from '@astrojs/image/components';
+import { Container, Icon, Link, Text } from '../components';
+import { ArrowRight } from 'svelte-heros-v2';
+import { HomeIssuesImage } from '../assets/home';
+---
+
+<div class='py-8'>
+  <Container>
+    <div class='flex flex-col md:flex-row items-center gap-8'>
+      <div class='w-full md:w-2/3'>
+        <Image
+          alt='hero'
+          src={HomeIssuesImage}
+          width={960}
+          height={960}
+          class='rounded-lg'
+        />
+      </div>
+
+      <div class='w-full md:w-auto'>
+        <div class='grid gap-5 p-0 md:p-5'>
+          <h2>Jacqueline On The Issues</h2>
+          <div class='grid gap-4'>
+            <Text>
+              The community of the Rochester deserves a school board that
+              prioritizes a safe learning environment, accountability for all,
+              and transparency in the decision making process.
+            </Text>
+            <Text>
+              With Jacqueline on the board, you can trust that the focus will be
+              on the fundamentals that make for a successful and thriving school
+              district.
+            </Text>
+          </div>
+          <Link href='/issues'>
+            View All Issues
+            <Icon icon={ArrowRight} size='20' />
+          </Link>
+        </div>
+      </div>
+    </div>
+  </Container>
+</div>

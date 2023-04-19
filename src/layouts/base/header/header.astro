@@ -1,0 +1,17 @@
+---
+import AnnouncementBar from './announcement-bar.astro';
+import Navbar from './navbar.astro';
+
+const announcement = {
+  message: 'Voting Information',
+  action: {
+    text: 'Learn More',
+    url: 'https://www2.monroecounty.gov/etc/voter/',
+  },
+};
+---
+
+<header class='shadow'>
+  <AnnouncementBar {announcement} />
+  <Navbar />
+</header>

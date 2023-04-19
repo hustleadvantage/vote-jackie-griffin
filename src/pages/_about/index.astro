@@ -1,0 +1,48 @@
+---
+import { Image } from '@astrojs/image/components';
+import { AboutImage } from '../../assets/about';
+import { Container, RichText } from '../../components';
+import { BaseLayout } from '../../layouts';
+
+const data = {
+  title: `Meet Jacqueline Griffin`,
+  bio: `
+      <p>Jacqueline (Jackie) Griffin (She/Her) is a graduate of the Rochester City School District and will be graduating with her Master's degree in Public Administration this May. She and her partner Larry Copeland, an established entrepreneur, and business man in the city of Rochester, are the proud parents of two black young men who are being educated in the City of Rochester. Any reoccurring theme’s here? Jackie is for The City of Rochester. Her entire existence is focused on providing her children the best opportunities that can be afforded to them.</p>
+      <p>She is a mother, that like many of us, must contemplate how to keep sacred the lives of her sons and all the other young men and women in our communities, more often than she would like to admit. Raising young black children in America today is certainly not for the faint of heart. She is in this with all the other mothers that know we need a change for the better, who cringes at the word of another school shooting or incidents of police brutality in our communities. She is seeking safety in schools for all children by working with the police department, educators, and parents to keep children safe in school and at home.</p>
+      <p>Jacqueline's goal is to promote a fair chance for all marginalized individuals, all ethnicities, all genders, all people in the community. She seeks to be the voice for children who have not found theirs yet, providing them with the necessary tools to make it through each day. Implementing programs where children have a voice and the adults in their lives can listen, bridge the divide, and provide hope for tomorrow. Jacqueline is an advocate for children, doing all she can to protect them, especially when their assigned adults are not at their best.</p>
+      <p>Furthermore, Jacqueline aims to inspire young fathers and mothers to be the best versions of themselves. She aims to nurture relationships and invest in programs that promote parenting skills, career advancement, and health education from home to school. Garner relationships, which can provide resources to begin the journey of healing, and passing that healing down to their children. She will spearhead implementation of creative programs that will address mental illness starting in the home.</p>
+      <p>Jacqueline wants every child in Rochester, New York, to know that she will fight for them and give them the wings to fly like a butterfly towards success.</p>
+    `,
+  image: {
+    alt: 'Jacqueline Griffin',
+    url: AboutImage,
+    width: 960,
+    height: 960,
+  },
+};
+---
+
+<BaseLayout title='About'>
+  <div class='py-8 md:py-16'>
+    <Container>
+      <div class='grid gap-8'>
+        <h1 class='text-center'>{data.title}</h1>
+
+        <div class='w-full md:w-1/2 mx-auto'>
+          <div>
+            <Image
+              alt={data.image.alt}
+              src={data.image.url}
+              width={data.image.width}
+              height={data.image.height}
+            />
+          </div>
+        </div>
+
+        <div class='flex justify-center'>
+          <RichText value={data.bio} />
+        </div>
+      </div>
+    </Container>
+  </div>
+</BaseLayout>
