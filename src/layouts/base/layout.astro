@@ -1,8 +1,9 @@
 ---
 import '../../styles/app.scss';
+import Analytics from './analytics.astro';
 // import { Header } from './header';
 
-export interface Props {
+interface Props {
   title: string;
 }
 
@@ -18,20 +19,12 @@ const isProd = import.meta.env.PROD;
 <html class='h-full' lang='en'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
+    <meta name='viewport' content='width=device-width,initial-scale=1' />
     <link rel='icon' type='image/svg+xml' href='/favicon.ico' />
     <meta name='generator' content={Astro.generator} />
     <title>{`Vote Jackie Griffin - ${title}`}</title>
 
-    <!-- Google tag (gtag.js) -->
-    {
-      isProd && (
-        <script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=G-4S8656Z0VP'
-        />
-      )
-    }
+    {isProd && <Analytics measurementId={analyticsMeasurementId} />}
   </head>
 
   <body class='h-full'>
