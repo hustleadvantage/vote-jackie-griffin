@@ -1,0 +1,119 @@
+---
+import {
+  Button,
+  Captcha,
+  Container,
+  FormControl,
+  FormControls,
+  FormLabel,
+} from '../../components';
+import { BaseLayout } from '../../layouts';
+import { Input } from '../../components/input';
+import { TextArea } from '../../components/text-area';
+
+// if (Astro.request.method === 'POST') {
+//   try {
+//     const data = await Astro.request.formData();
+//     const name = data.get('name');
+//     const email = data.get('email');
+//     const phone = data.get('phone');
+//     const message = data.get('message');
+
+//     const request = {
+//       name,
+//       email,
+//       phone,
+//       message,
+//     };
+
+//     const response = await fetch(import.meta.env.PUBLIC_CONTACT_FORM_ACTION, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         Accept: 'application/json',
+//       },
+//       body: JSON.stringify(request),
+//     });
+
+//     const json = await response.json();
+//     console.log(json);
+//     return Astro.redirect(Astro.url);
+//   } catch (error) {
+//     if (error instanceof Error) {
+//       console.error(error.message);
+//     }
+//   }
+// }
+
+const contactFormAction = import.meta.env.PUBLIC_CONTACT_FORM_ACTION;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const contactFormRedirectUrl = `${Astro.url.origin}/contact/thank-you`;
+---
+
+<BaseLayout title='About'>
+  <section class='py-8 md:py-16'>
+    <Container>
+      <div class='grid gap-8'>
+        <h1 class='text-center'>Get In Contact</h1>
+
+        <div class='flex flex-col justify-center gap-8'>
+          <div class='max-w-sm w-full mx-auto'>
+            <form method='POST' action={contactFormAction}>
+              <input
+                type='hidden'
+                name='_redirect'
+                value={contactFormRedirectUrl}
+              />
+
+              <div class='grid gap-6'>
+                <FormControls>
+                  <FormControl>
+                    <FormLabel>Name</FormLabel>
+                    <Input name='name' type='text' />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Email</FormLabel>
+                    <Input name='email' type='email' />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel optional>Mobile Phone</FormLabel>
+                    <Input name='phone' type='text' optional />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Message</FormLabel>
+                    <TextArea name='message' />
+                  </FormControl>
+                </FormControls>
+
+                <Captcha siteKey={turnstileSiteKey} client:load />
+
+                <Button type='submit'>Send Message</Button>
+              </div>
+            </form>
+          </div>
+
+          <div class='w-full md:w-1/2 mx-auto'>
+            <div>
+              <!-- <Image
+                alt={data.image.alt}
+                src={data.image.url}
+                width={data.image.width}
+                height={data.image.height}
+              /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+
+<script>
+  const handleSubmit = (form: HTMLFormElement) => {
+    form.submitButton.disabled = true;
+    return false;
+  };
+</script>

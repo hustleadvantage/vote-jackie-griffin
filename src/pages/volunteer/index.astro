@@ -1,0 +1,159 @@
+---
+import {
+  Button,
+  Captcha,
+  Container,
+  FormControl,
+  FormControls,
+  FormLabel,
+} from '../../components';
+import { BaseLayout } from '../../layouts';
+import { Input } from '../../components/input';
+
+const volunteerFormAction = import.meta.env.PUBLIC_VOLUNTEER_FORM_ACTION;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+const volunteerFormRedirectUrl = `${Astro.url.origin}/volunteer/thank-you`;
+---
+
+<BaseLayout title='About'>
+  <section class='py-8 md:py-16'>
+    <Container>
+      <div class='grid gap-8'>
+        <h1 class='text-center'>Volunteer</h1>
+
+        <div class='flex flex-col justify-center gap-8'>
+          <div class='max-w-sm w-full mx-auto'>
+            <form method='POST' action={volunteerFormAction}>
+              <input
+                type='hidden'
+                name='_redirect'
+                value={volunteerFormRedirectUrl}
+              />
+
+              <div class='grid gap-6'>
+                <FormControls>
+                  <FormControl>
+                    <FormLabel>Name</FormLabel>
+                    <Input name='name' type='text' />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Email</FormLabel>
+                    <Input name='email' type='email' />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>Mobile Phone</FormLabel>
+                    <Input name='phone' type='text' optional />
+                  </FormControl>
+
+                  <FormControl>
+                    <FormLabel>
+                      Which volunteer option(s) works for you?
+                    </FormLabel>
+
+                    <div class='grid gap-3'>
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='canvasser'
+                        />
+                        <label>Canvasser (Knock on Doors)</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='event_setup_cleanup'
+                        />
+                        <label>Event Setup / Clean Up</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='host_event'
+                        />
+                        <label>Host an Event</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='phone_caller'
+                        />
+                        <label>Phone Caller</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='poll_coordinator'
+                        />
+                        <label>Poll Coordinator</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='poll_driver'
+                        />
+                        <label>Poll Driver</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='sign_distributor'
+                        />
+                        <label>Sign Distributor</label>
+                      </div>
+
+                      <div class='flex gap-2'>
+                        <input
+                          type='checkbox'
+                          name='volunteer_interests'
+                          value='voter_registration'
+                        />
+                        <label>Voter Registration</label>
+                      </div>
+                    </div>
+                  </FormControl>
+                </FormControls>
+
+                <Captcha siteKey={turnstileSiteKey} client:load />
+
+                <Button type='submit'>Join Our Team</Button>
+              </div>
+            </form>
+          </div>
+
+          <div class='w-full md:w-1/2 mx-auto'>
+            <div>
+              <!-- <Image
+                alt={data.image.alt}
+                src={data.image.url}
+                width={data.image.width}
+                height={data.image.height}
+              /> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>
+
+<script>
+  const handleSubmit = (form: HTMLFormElement) => {
+    form.submitButton.disabled = true;
+    return false;
+  };
+</script>

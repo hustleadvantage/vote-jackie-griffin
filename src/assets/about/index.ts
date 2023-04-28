@@ -1,1 +1,1 @@
-export { default as AboutImage } from './family.webp';
+export { default as AboutImage } from './about-hero.webp';

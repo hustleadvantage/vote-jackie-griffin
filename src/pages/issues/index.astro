@@ -1,0 +1,74 @@
+---
+import { Container } from '../../components';
+import { BaseLayout } from '../../layouts';
+import { getIssues } from './issues';
+
+const issues = getIssues();
+---
+
+<BaseLayout title='About'>
+  <div class='pt-8 md:pt-16'>
+    <Container>
+      <div class='grid gap-8'>
+        <h1>Jacqueline On The Issues</h1>
+      </div>
+    </Container>
+
+    <div class='py-8 md:py-16'>
+      <Container>
+        <div class='grid gap-10 md:gap-16'>
+          {
+            issues.map(
+              ({ problem, mistakes, solution, title, subheading, text }) => (
+                <div class='flex flex-col md:flex-row gap-8'>
+                  <div class='flex flex-col gap-5 md:gap-8'>
+                    <h2>{title}</h2>
+                    <div class='grid gap-3'>
+                      <h4 class='text-heading-sm font font-semibold'>
+                        {subheading}
+                      </h4>
+                      <p>{text}</p>
+                    </div>
+
+                    <div class='grid gap-2'>
+                      <h4 class='text-heading-sm font font-semibold'>
+                        The Problem
+                      </h4>
+                      <p>{problem}</p>
+                    </div>
+
+                    <div class='grid gap-2'>
+                      <h4 class='text-heading-sm font font-semibold'>
+                        Common Issues
+                      </h4>
+                      <ul class='grid gap-3 pl-8 list-disc'>
+                        {mistakes.map((mistake) => (
+                          <li>
+                            <p>{mistake}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div class='grid gap-2'>
+                      <h4 class='text-heading-sm font font-semibold'>
+                        The Solution
+                      </h4>
+                      <ol class='grid gap-3 pl-8 list-decimal'>
+                        {solution.map((step) => (
+                          <li>
+                            <p>{step}</p>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              )
+            )
+          }
+        </div>
+      </Container>
+    </div>
+  </div>
+</BaseLayout>

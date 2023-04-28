@@ -1,8 +1,12 @@
 ---
 import { Button } from '../../../components';
-import { config } from '../../../constants';
 
-const navLinks = config.navigation.links;
+interface Props {
+  links: { href: string; text: string }[];
+  actions: Record<'donate', { url: string; text: string }>;
+}
+
+const { links, actions } = Astro.props;
 ---
 
 <nav
@@ -11,12 +15,9 @@ const navLinks = config.navigation.links;
 >
   <div class='flex items-center justify-between'>
     <div class='min-w-max lg:pl-5'>
-      <a class='text-lg font-bold' href='/'>
-        <div>
-          Jacqueline Griffin <span class='block text-base font-normal'
-            >For Rochester School Board</span
-          >
-        </div>
+      <a class='inline-grid text-lg font-bold' href='/'>
+        <span>Jacqueline Griffin</span>
+        <span class='text-sm font-normal'>For Rochester School Board</span>
       </a>
     </div>
     <div class='sm:hidden'>
@@ -58,7 +59,7 @@ const navLinks = config.navigation.links;
       class='flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:pl-5'
     >
       {
-        navLinks.map((link) => (
+        links.map((link) => (
           <a
             class='text-lg font-medium'
             href={link.href}
@@ -69,8 +70,8 @@ const navLinks = config.navigation.links;
         ))
       }
 
-      <Button size='sm' href={config.actions.donate.url}>
-        {config.actions.donate.text}
+      <Button size='sm' href={actions.donate.url}>
+        {actions.donate.text}
       </Button>
     </div>
   </div>

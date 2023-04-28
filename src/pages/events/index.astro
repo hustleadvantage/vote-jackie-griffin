@@ -1,0 +1,57 @@
+---
+import { EarlyVoting, VoterRegistration, VotingDay } from '../../assets/events';
+import { Container } from '../../components';
+import { BaseLayout } from '../../layouts';
+import EventCard from './_event-card.astro';
+
+const events = [
+  {
+    image: VoterRegistration,
+    date: 'June 17',
+    title: 'Voter Registration Deadline - Primary Election',
+    description: `Not registered to vote? You must mail or deliver your completed registration form to the Board of Elections no later than 10 days before the election.`,
+    link: {
+      text: 'Register To Vote',
+      url: `https://www.monroecounty.gov/elections-registration`,
+    },
+  },
+  {
+    image: EarlyVoting,
+    date: 'June 17 - June 25',
+    title: 'Early Voting - Primary Election',
+    description: `Want to avoid the crowd on Election Day? You can vote early. Early voting is available to all registered voters in Monroe County.`,
+    link: {
+      text: 'Learn More',
+      url: `https://www.monroecounty.gov/elections-earlyvoting`,
+    },
+  },
+  {
+    image: VotingDay,
+    date: 'June 27',
+    title: 'Primary Election Day',
+    description: `Help Jacquline secure her spot by voting for her in the first round. Getting enough votes allows her to compete in the final round of voting later in the year.`,
+    link: {
+      text: `Learn More`,
+      url: `https://www2.monroecounty.gov/etc/voter/`,
+    },
+  },
+];
+---
+
+<BaseLayout title='About'>
+  <div class='py-8 md:py-16'>
+    <Container>
+      <div class='grid gap-8'>
+        <h1>Events</h1>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {
+            events.map(({ image, date, title, description, link }) => (
+              <EventCard {image} {date} {description} {link} {title} />
+            ))
+          }
+        </div>
+      </div>
+    </Container>
+  </div>
+</BaseLayout>

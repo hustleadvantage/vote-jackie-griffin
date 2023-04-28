@@ -1,0 +1,27 @@
+---
+import { Image } from '@astrojs/image/components';
+
+interface Props {
+  image: any;
+  date: string;
+  title: string;
+  description: string;
+  link: { text: string; url: string };
+}
+
+const { image, date, title, description, link } = Astro.props;
+---
+
+<div class='grid shadow rounded-lg overflow-hidden'>
+  <div>
+    <Image alt='' src={image} width={640} height={640} />
+  </div>
+  <div class='grid gap-4 p-6'>
+    <p>{date}</p>
+    <h4>{title}</h4>
+    <p>{description}</p>
+    <a class='text-accent-500 font-semibold' href={link.url} target='_blank'
+      >{link.text}</a
+    >
+  </div>
+</div>

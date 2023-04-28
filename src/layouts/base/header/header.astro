@@ -1,4 +1,5 @@
 ---
+import { config } from '../../../constants';
 import AnnouncementBar from './announcement-bar.astro';
 import Navbar from './navbar.astro';
 
@@ -9,9 +10,11 @@ const announcement = {
     url: 'https://www2.monroecounty.gov/etc/voter/',
   },
 };
+
+const { links, actions } = config.navigation;
 ---
 
-<header class='shadow'>
+<header class='bg-white border-b border-b-neutral-100'>
   <AnnouncementBar {announcement} />
-  <Navbar />
+  <Navbar {links} {actions} />
 </header>
