@@ -4,6 +4,7 @@ export const config = {
   links: {
     donate: DONATE_URL,
     facebook: import.meta.env.PUBLIC_FACEBOOK_URL,
+    volunteer: import.meta.env.PUBLIC_VOLUNTEER_URL,
     yardSign: import.meta.env.PUBLIC_YARD_SIGN_URL,
   },
   navigation: {
