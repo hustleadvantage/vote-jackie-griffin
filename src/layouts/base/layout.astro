@@ -13,6 +13,8 @@ const analyticsMeasurementId = import.meta.env
   .PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID;
 
 const useAnalytics = false;
+
+const year = new Date().getFullYear();
 ---
 
 <!DOCTYPE html>
@@ -33,9 +35,18 @@ const useAnalytics = false;
   <body class='h-full bg-neutral-50'>
     <div class='h-full flex flex-col'>
       <Header />
+
       <main class='flex-1'>
         <slot />
       </main>
+
+      <footer class='pt-16 pb-8'>
+        <div class='flex justify-center'>
+          <p class='text-sm'>
+            &copy; {year} Jacqueline Griffin For School Board
+          </p>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

@@ -1,8 +1,7 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { Button, Container, Icon, Text } from '../components';
+import { Button, Container, Text } from '../components';
 import { HomeHeroImage } from '../assets/home';
-import { Envelope } from 'svelte-heros-v2';
 
 interface Props {
   contactEmail: string;
@@ -10,39 +9,45 @@ interface Props {
   donateText: string;
 }
 
-const { contactEmail, donateUrl, donateText } = Astro.props;
+const { donateUrl, donateText } = Astro.props;
 ---
 
-<div class='py-8 md:py-16'>
-  <Container>
-    <div class='flex flex-col md:flex-row-reverse gap-4 rounded-lg shadow-lg'>
-      <div class='flex justify-center w-full md:w-1/2'>
-        <Image
-          alt='hero'
-          src={HomeHeroImage}
-          width={960}
-          height={1280}
-          fetchpriority='high'
-          class='rounded-lg'
-        />
-      </div>
-
+<div class='bg-[url(/flag-bg.webp)] bg-no-repeat bg-cover bg-center'>
+  <div class='py-8 md:py-16'>
+    <Container>
       <div
-        class='w-full md:w-1/2 flex flex-col justify-center gap-6 p-5 lg:p-10'
+        class='flex flex-col md:flex-row-reverse gap-4 rounded-lg shadow bg-neutral-50'
       >
-        <div class='grid gap-3'>
-          <h1>Jacqueline Griffin For Rochester School Board</h1>
-          <Text size='text-xl'>
-            A commitment to quality education for every child!
-          </Text>
+        <div class={`flex justify-center w-full md:w-1/2`}>
+          <Image
+            alt='hero'
+            src={HomeHeroImage}
+            width={960}
+            height={1280}
+            fetchpriority='high'
+            class='rounded-lg'
+          />
         </div>
 
-        <div class='flex flex-col md:flex-row items-center gap-2'>
-          <Button href={donateUrl}>
-            {donateText}
-          </Button>
+        <div
+          class={`w-full md:w-1/2 flex flex-col justify-center gap-6 p-5 lg:p-10`}
+        >
+          <div class='grid gap-3'>
+            <h1>Jacqueline Griffin For Rochester School Board</h1>
+            <Text size='text-xl'>
+              Join the mission to create a brighter future for our children.
+              Like the simple flutter of a butterfly wing our youth can change
+              the world!
+            </Text>
+          </div>
+
+          <div class='w-full md:w-1/2'>
+            <Button fluid href={donateUrl}>
+              {donateText}
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-  </Container>
+    </Container>
+  </div>
 </div>

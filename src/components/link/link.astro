@@ -1,15 +1,27 @@
 ---
 interface Props {
   href: string;
-  size?: string;
+  size?: 'sm' | 'md' | 'lg';
+  type?: 'card' | 'text';
 }
 
-const { href, size = 'text-lg' } = Astro.props;
+const { href, size = 'md', type = 'text' } = Astro.props;
+
+const sizes = {
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg',
+};
+
+const types = {
+  card: 'inline-grid',
+  text: 'inline-flex items-center gap-2 text-accent-500 font-semibold',
+};
+
+const isExternalLink = href.startsWith('http');
+const target = isExternalLink ? '_blank' : '_self';
 ---
 
-<a
-  {href}
-  class={`inline-flex items-center gap-2 text-accent-500 font-semibold ${size}`}
->
+<a {href} {target} class={`${types[type]} ${sizes[size]}`}>
   <slot />
 </a>

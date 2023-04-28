@@ -1,0 +1,63 @@
+---
+import { ArrowRight } from 'svelte-heros-v2';
+import { Container, Icon, Link } from '../../components';
+import { BaseLayout } from '../../layouts';
+import { config } from '../../constants';
+
+const involvements = [
+  {
+    title: 'Volunteer',
+    description: `Winning this election will require committed supporters.`,
+    link: { text: `Become a volunteer`, href: '/volunteer' },
+  },
+  {
+    title: 'Contribute Today',
+    description: `We need grassroots supporters like you to power our campaign.`,
+    link: {
+      text: `Donate`,
+      href: config.links.donate,
+    },
+  },
+  {
+    title: 'Follow Us on Facebook',
+    description: `Join our community of supporters and get updates on the campaign.`,
+    link: { text: `Follow Us`, href: config.links.facebook },
+  },
+];
+---
+
+<BaseLayout title='Get Involved'>
+  <div class='pt-8'>
+    <Container>
+      <div class='grid gap-6'>
+        <h1 class='text-center'>Get Involved</h1>
+      </div>
+    </Container>
+  </div>
+
+  <div class='py-8 md:py-16'>
+    <Container>
+      <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        {
+          involvements.map(({ title, description, link }) => (
+            <Link href={link.href} type='card'>
+              <div class='p-6 rounded-lg bg-white shadow transition-all duration-200 hover:scale-[102%]'>
+                <div class='grid gap-4'>
+                  <div class='grid gap-2'>
+                    <h5>{title}</h5>
+                    <p>{description}</p>
+                  </div>
+
+                  <span class='inline-flex items-center gap-2 text-accent-600 font-semibold tracking-wide'>
+                    {link.text}
+                    <Icon size='md' icon={ArrowRight} />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))
+        }
+      </div>
+    </Container>
+  </div>
+</BaseLayout>
