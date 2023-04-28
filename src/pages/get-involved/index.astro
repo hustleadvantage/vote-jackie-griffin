@@ -19,6 +19,14 @@ const involvements = [
     },
   },
   {
+    title: 'Request a Yard Sign',
+    description: `Help spread the word about our campaign by requesting a yard sign today.`,
+    link: {
+      text: `Request A Sign`,
+      href: config.links.yardSign,
+    },
+  },
+  {
     title: 'Follow Us on Facebook',
     description: `Join our community of supporters and get updates on the campaign.`,
     link: { text: `Follow Us`, href: config.links.facebook },
@@ -29,8 +37,14 @@ const involvements = [
 <BaseLayout title='Get Involved'>
   <div class='pt-8'>
     <Container>
-      <div class='grid gap-6'>
+      <div class='grid gap-3'>
         <h1 class='text-center'>Get Involved</h1>
+        <div class='flex justify-center'>
+          <p class='text-lg'>
+            Let's work together to ensure a bright future for our students and
+            community.
+          </p>
+        </div>
       </div>
     </Container>
   </div>
