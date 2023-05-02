@@ -18,7 +18,7 @@ export const getIssues = () => {
       id: generateId(),
       title: `Safety`,
       subheading: `Putting Safety First`,
-      text: `Join me in advocating for the safety of our students and staff. Together, let&#39;s implement comprehensive
+      text: `Join me in advocating for the safety of our students and staff. Together, let's implement comprehensive
       safety measures in our schools and ensure a safe and secure learning environment for all. We must
       return to the “Takes a Village” approach for our children’s sake.`,
       problem: `Safety in Schools across the Country, including Rochester City Schools, has been of major concern for staff, parents, and students. We must come together as a cohesive group of educators, parents, and
