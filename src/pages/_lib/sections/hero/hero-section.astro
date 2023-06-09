@@ -1,7 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { Button, Container, Text } from '../components';
-import { HomeHeroImage } from '../assets/home';
+import { HomeHeroImage } from '$assets/home';
+import { Container } from '$components/container';
+import { Text } from '$components/text';
+import { Button } from '$components/button';
 
 interface Props {
   contactEmail: string;
@@ -16,19 +18,8 @@ const { donateUrl, donateText } = Astro.props;
   <div class='py-8 md:py-16'>
     <Container>
       <div
-        class='flex flex-col md:flex-row-reverse gap-4 rounded-lg shadow bg-neutral-50'
+        class='flex flex-col md:flex-row gap-4 rounded-lg shadow bg-neutral-50'
       >
-        <div class={`flex justify-center w-full md:w-1/2`}>
-          <Image
-            alt='hero'
-            src={HomeHeroImage}
-            width={960}
-            height={1280}
-            fetchpriority='high'
-            class='rounded-lg'
-          />
-        </div>
-
         <div
           class={`w-full md:w-1/2 flex flex-col justify-center gap-6 p-5 lg:p-10`}
         >
@@ -46,6 +37,17 @@ const { donateUrl, donateText } = Astro.props;
               {donateText}
             </Button>
           </div>
+        </div>
+
+        <div class={`flex justify-center w-full md:w-1/2`}>
+          <Image
+            alt='hero'
+            src={HomeHeroImage}
+            width={960}
+            height={1280}
+            fetchpriority='high'
+            class='rounded-lg'
+          />
         </div>
       </div>
     </Container>

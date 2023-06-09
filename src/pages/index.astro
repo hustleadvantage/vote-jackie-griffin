@@ -1,8 +1,11 @@
 ---
 import { BaseLayout } from '../layouts';
-import IntroSection from './_intro-section.astro';
-import IssuesSection from './_issues-section.astro';
-import HeroSection from './_hero-section.astro';
+import {
+  AboutSection,
+  HeroSection,
+  IssuesSection,
+  SocialSection,
+} from './_lib/sections';
 
 const contactEmail = import.meta.env.PUBLIC_CONTACT_EMAIL;
 const donateText = 'Donate';
@@ -12,7 +15,8 @@ const donateUrl = import.meta.env.PUBLIC_DONATE_URL;
 <BaseLayout title='Home'>
   <div class='h-full'>
     <HeroSection {contactEmail} {donateText} {donateUrl} />
-    <IntroSection />
     <IssuesSection />
+    <SocialSection />
+    <AboutSection />
   </div>
 </BaseLayout>

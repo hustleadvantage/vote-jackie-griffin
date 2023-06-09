@@ -1,0 +1,37 @@
+---
+import { Container } from '$components/container';
+import { Icon } from '$components/icon';
+import { Link } from '$components/link';
+import { ArrowRight } from 'svelte-heros-v2';
+import { ISSUES } from './content';
+---
+
+<div class='py-8 md:py-16 lg:py-24'>
+  <Container>
+    <div class='flex items-center justify-between mb-12'>
+      <h2>Issues</h2>
+
+      <Link href='/issues'>
+        View All Issues
+        <Icon icon={ArrowRight} size={20} />
+      </Link>
+    </div>
+
+    <div class='grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3'>
+      {
+        ISSUES.map(({ icon, title, description }) => (
+          <div class='flex flex-col gap-5 p-6 bg-[#5171A5] rounded-lg'>
+            <div class='flex items-center gap-2'>
+              <Icon icon={icon} size={28} />
+              <p class='text-xl text-white font-semibold'>{title}</p>
+            </div>
+
+            <div>
+              <p class='text-lg text-white'>{description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</div>

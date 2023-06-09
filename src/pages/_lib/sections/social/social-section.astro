@@ -1,0 +1,13 @@
+---
+import { Container } from '$components/container';
+import { Image } from '@astrojs/image/components';
+import { HomeSocialImage } from '$assets/home';
+---
+
+<div class='py-8 md:py-16 lg:py-24'>
+  <Container>
+    <div class='rounded-lg overflow-hidden'>
+      <Image alt='' src={HomeSocialImage} width={1216} height={608} />
+    </div>
+  </Container>
+</div>

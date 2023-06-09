@@ -9,7 +9,6 @@ export const config = {
   },
   navigation: {
     links: [
-      { text: 'Home', href: '/' },
       { text: 'Issues', href: '/issues' },
       { text: 'Events', href: '/events' },
       { text: 'Get Involved', href: '/get-involved' },

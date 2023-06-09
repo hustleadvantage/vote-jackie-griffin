@@ -1,15 +1,11 @@
 ---
-import {
-  Button,
-  Captcha,
-  Container,
-  FormControl,
-  FormControls,
-  FormLabel,
-} from '../../components';
 import { BaseLayout } from '../../layouts';
 import { Input } from '../../components/input';
 import { TextArea } from '../../components/text-area';
+import { Container } from '$components/container';
+import { FormControl, FormControls, FormLabel } from '$components/form-control';
+import { Captcha } from '$components/captcha';
+import { Button } from '$components/button';
 
 const contactFormAction = import.meta.env.PUBLIC_CONTACT_FORM_ACTION;
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
